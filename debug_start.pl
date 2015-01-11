@@ -86,13 +86,6 @@ http:location(pldoc, root('help/source'), [priority(10)]).
 % launch our first handler
 :-www_open_url('http://localhost:7777/').
 
-% and our pldoc home page
-:-www_open_url('http://localhost:7777/help/source/').
-
-% and the workshop page
-:-www_open_url('http://localhost:7777/workshop').
-
-
 % and bring up a module in the editor
 :- edit('debug_start.pl').
 

@@ -9,14 +9,12 @@
 % Needed to generate html
 :- use_module(library(http/html_write)).
 
-% and we need the borders inclusion
-:- use_module(fancy_borders).
 
 
 %
 % this handler uses an abstract path. The absolute
 % paths we've been using are not good practice
-:- http_handler(root(pagedemo), page_demo , []).
+:- http_handler(/, page_demo , []).
 
 %%	page_demo(+Request:request) is det
 %
@@ -78,7 +76,6 @@ syntax_demo -->
 		'This is a link to a handler with an id (yet to be covered)')),
 	    p(class([bar, baz, mep]), 'this has 3 classes'),
 	    \an_inclusion,
-	    \fancy_border(dot_madness, \an_inclusion),
 	    \an_inclusion_with_qq
 	]).
 
