@@ -9,6 +9,12 @@
 % Needed to generate html
 :- use_module(library(http/html_write)).
 
+user:file_search_path(backend,'../../swi-prolog-backend/').
+
+
+:-use_module(backend(backend)).
+
+
 
 
 %
@@ -24,8 +30,26 @@ page_demo(_Request) :-
 	reply_html_page(
 	    title('OS Academy Rocks!'),
 	    div([h1('OS Academy Rocks'),
-		 p('This page was generated from termerized html')
+		 p('This page was generated from termerized html'),
+		 \showcourse
 		])).
+
+
+
+showcourse -->
+	{
+           data(Courses)
+        },
+	showcourse(Courses).
+
+showcourse([])-->
+	[].
+
+showcourse([H | T]) -->
+	html(p(H)),
+	showcourse(T).
+
+
 
 /*
 	Much going on above.
