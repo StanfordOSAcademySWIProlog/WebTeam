@@ -9,13 +9,7 @@
 % Needed to generate html
 :- use_module(library(http/html_write)).
 
-user:file_search_path(backend,'../../swi-prolog-backend/').
-
-
 :-use_module(backend(backend)).
-
-
-
 
 %
 % this handler uses an abstract path. The absolute
