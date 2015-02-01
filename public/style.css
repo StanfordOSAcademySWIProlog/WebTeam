@@ -1,0 +1,19 @@
+h1{
+	text-align: center;
+	font-family: inherit;
+}
+
+
+.container {
+margin: 20px auto;
+width: 800px;
+}
+
+body {
+display: block;
+margin: 20px;
+}
+
+p{
+	 padding-top: 5px;
+}
