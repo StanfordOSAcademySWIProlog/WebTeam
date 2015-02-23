@@ -1,0 +1,12 @@
+
+table {
+    width: 100%;
+}
+
+
+td {
+    
+	padding: 20px;
+    height: 50px;
+    vertical-align: bottom;
+}
