@@ -37,16 +37,21 @@ showcourses -->
 	{
            courses(Courses)
         },
-	html(table(class(courses), [
-	     \['<thead><tr><th>I.D.</th><th>Course Title</th><th>Units</th><th>Description</th><th>Prerequisites</th></tr></thead>'],
-	     tbody(\showcourses(Courses))])).
+	html(form(action('/taken'), [
+		   table(class(courses), [
+	     \['<thead><tr><th>Taken</th><th>I.D.</th><th>Course Title</th><th>Units</th><th>Description</th><th>Prerequisites</th></tr></thead>'],
+	     tbody(\showcourses(Courses))]),
+	     input([type(submit),
+		    name(submit),
+		    value('Update')], [])
+		   ])).
 
 showcourses([])-->
 	[].
 
 showcourses([ course(ID, Title, Units, Descr, Reqs) | T]) -->
 	html({|html(ID, Title, Units, Descr, Reqs)||
-	         <tr><td>ID</td><td>Title</td><td>Units</td><td>Descr</td><td>Reqs</td></tr>
+	         <tr><td><input type="checkbox" name="ID"></td><td>ID</td><td>Title</td><td>Units</td><td>Descr</td><td>Reqs</td></tr>
 	     |}),
 	showcourses(T).
 
