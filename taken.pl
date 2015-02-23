@@ -8,6 +8,7 @@
 
 % Needed to generate html
 :- use_module(library(http/html_write)).
+:- use_module(backend(backend)).
 
 :- http_handler('/taken', taken_lander, [id(taken)]).
 
@@ -20,5 +21,10 @@ taken_lander(Request) :-
 			\taken_body(Courses)).
 
 taken_body(Courses) -->
-	{ format(atom(S), '~q', [Courses]) },
-	html(pre(S)).
+	{ format(atom(S), '~q', [Courses]),
+	  maplist(massage, Courses, CleanCourses),
+	  courses_taken(CleanCourses)
+	},
+	html([pre(S), p('Someday this will be the tech tree')]).
+
+massage(In=_, Out) :- www_form_encode(Out, In).
