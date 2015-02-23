@@ -22,8 +22,9 @@
 %
 course_page(_Request) :-
 	reply_html_page(
+	    ucsd,
 	    title('UCSD CS Course Planner!'),
-	    div([h1('UCSD CS Course Planner'),
+	    div([
 		 p(['Check the courses you', &(apos), 've already taken']),
 		 \showcourses
 		])).

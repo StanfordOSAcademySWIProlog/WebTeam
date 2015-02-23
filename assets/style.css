@@ -10,3 +10,8 @@ td {
     height: 50px;
     vertical-align: bottom;
 }
+
+h1 {
+     font-family: sans-serif;
+	 font-size: 40pt;
+}
