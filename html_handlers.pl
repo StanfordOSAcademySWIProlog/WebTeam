@@ -1,4 +1,4 @@
-:- module(html_handlers, [an_inclusion//0]).
+:- module(html_handlers, []).
 /** <module> Handlers that use the built in html generation
 
 */
@@ -14,17 +14,17 @@
 %
 % this handler uses an abstract path. The absolute
 % paths we've been using are not good practice
-:- http_handler(/, page_demo , []).
+:- http_handler(/, course_page , []).
 
-%%	page_demo(+Request:request) is det
+%%	course_page(+Request:request) is det
 %
 %	A simple page using the 'termerized html' form
 %
-page_demo(_Request) :-
+course_page(_Request) :-
 	reply_html_page(
-	    title('OS Academy Rocks!'),
-	    div([h1('OS Academy Rocks'),
-		 p('This page was generated from termerized html'),
+	    title('UCSD CS Course Planner!'),
+	    div([h1('UCSD CS Course Planner'),
+		 p(['Check the courses you', &(apos), 've already taken']),
 		 \showcourses
 		])).
 
@@ -38,9 +38,8 @@ showcourses -->
            courses(Courses)
         },
 	html(table(class(courses), [
-	     {|html||<tr><th>I.D.</th><th>Course Title</th><th>units</th><th>Prerequisites</th></tr>|},
-		       \showcourses(Courses)])).
-
+	     \['<thead><tr><th>I.D.</th><th>Course Title</th><th>Units</th><th>Description</th><th>Prerequisites</th></tr></thead>'],
+	     tbody(\showcourses(Courses))])).
 
 showcourses([])-->
 	[].
