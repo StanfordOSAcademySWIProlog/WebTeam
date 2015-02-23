@@ -28,6 +28,8 @@ user:file_search_path(backend, Location) :-
 :- ensure_loaded(static_handlers).
 :- ensure_loaded(style).
 :- ensure_loaded(taken).
+:- ensure_loaded(library(http/http_session)).
+
 
 
 
