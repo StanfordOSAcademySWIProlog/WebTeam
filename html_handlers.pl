@@ -25,23 +25,31 @@ page_demo(_Request) :-
 	    title('OS Academy Rocks!'),
 	    div([h1('OS Academy Rocks'),
 		 p('This page was generated from termerized html'),
-		 \showcourse
+		 \showcourses
 		])).
 
 
-
-showcourse -->
+%%	showcourses// is det
+%
+% show a list of courses
+%
+showcourses -->
 	{
-           data(Courses)
+           courses(Courses)
         },
-	showcourse(Courses).
+	html(table(class(courses), [
+	     {|html||<tr><th>I.D.</th><th>Course Title</th><th>units</th><th>Prerequisites</th></tr>|},
+		       \showcourses(Courses)])).
 
-showcourse([])-->
+
+showcourses([])-->
 	[].
 
-showcourse([H | T]) -->
-	html(p(H)),
-	showcourse(T).
+showcourses([ course(ID, Title, Units, Descr, Reqs) | T]) -->
+	html({|html(ID, Title, Units, Descr, Reqs)||
+	         <tr><td>ID</td><td>Title</td><td>Units</td><td>Descr</td><td>Reqs</td></tr>
+	     |}),
+	showcourses(T).
 
 
 
