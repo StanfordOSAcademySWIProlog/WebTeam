@@ -27,6 +27,8 @@ user:file_search_path(backend, Location) :-
 :- ensure_loaded(resourcedemo).
 :- ensure_loaded(static_handlers).
 :- ensure_loaded(style).
+:- ensure_loaded(taken).
+
 
 
 
