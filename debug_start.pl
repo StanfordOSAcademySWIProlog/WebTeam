@@ -87,7 +87,7 @@ http:location(pldoc, root('help/source'), [priority(10)]).
 :-www_open_url('http://localhost:7777/').
 
 % and bring up a module in the editor
-:- edit('debug_start.pl').
+%:- edit('debug_start.pl').
 
 % open the navigator
 % put it in module user so programmer doesn't have to

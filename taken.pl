@@ -25,6 +25,19 @@ taken_body(Courses) -->
 	  maplist(massage, Courses, CleanCourses),
 	  courses_taken(CleanCourses)
 	},
-	html([pre(S), p('Someday this will be the tech tree')]).
+	html([pre(T), p('Tech Tree'),
+        \showtree
+        ]).
+
+showtree -->
+        {
+          tech_tree(T)
+        },
+        html(
+            
+        ).
+
+nomap(_, _, _) :-
+   assertion(fail).
 
 massage(In=_, Out) :- www_form_encode(Out, In).
