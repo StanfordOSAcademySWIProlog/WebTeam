@@ -21,8 +21,9 @@ taken_lander(Request) :-
 			\taken_body(Courses)).
 
 taken_body(Courses) -->
-	{ format(atom(S), '~q', [Courses]),
+	{
 	  maplist(massage, Courses, CleanCourses),
+          debug(students, 'courses taken ~q', [CleanCourses]),
 	  courses_taken(CleanCourses)
 	},
 	html([pre(T), p('Tech Tree'),
@@ -34,7 +35,7 @@ showtree -->
           tech_tree(T)
         },
         html(
-            
+
         ).
 
 nomap(_, _, _) :-
