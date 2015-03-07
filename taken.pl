@@ -23,19 +23,19 @@ taken_lander(Request) :-
 taken_body(Courses) -->
 	{
 	  maplist(massage, Courses, CleanCourses),
-          % debug(students, 'courses taken ~q', [CleanCourses]),
+          debug(students, 'courses taken ~q', [CleanCourses]),
 	  courses_taken(CleanCourses)
 	},
-	html([ p('Tech Tree')
+	html([ pre(T), p('Tech Tree'), \showtree
         
         ]).
-/*
+
 showtree -->
        {
           tech_tree(T)
         },
         html(
-
+            
+          
         ).
-      */
 massage(In=_, Out) :- www_form_encode(Out, In).
