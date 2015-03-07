@@ -9,8 +9,14 @@
 % Needed to generate html
 :- use_module(library(http/html_write)).
 :- use_module(backend(backend)).
+:- use_module(library(http/http_session)).
 
 :- http_handler('/taken', taken_lander, [id(taken)]).
+
+
+save_takens(T) :-    
+    http_session_assert(save_takens(T)).
+
 
 taken_lander(Request) :-
 	memberchk(search(Search), Request),
@@ -26,7 +32,8 @@ taken_body(Courses) -->
           debug(students, 'courses taken ~q', [CleanCourses]),
 	  courses_taken(CleanCourses)
 	},
-	html([ pre(T), p('Tech Tree'), \showtree
+	html([ pre(T), p('Tech Tree')
+        %\showtree
         
         ]).
 
@@ -38,4 +45,5 @@ showtree -->
             
           
         ).
+
 massage(In=_, Out) :- www_form_encode(Out, In).
