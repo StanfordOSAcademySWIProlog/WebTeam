@@ -14,9 +14,6 @@
 :- http_handler('/taken', taken_lander, [id(taken)]).
 
 
-save_takens(T) :-    
-    http_session_assert(save_takens(T)).
-
 
 taken_lander(Request) :-
 	memberchk(search(Search), Request),
@@ -28,22 +25,16 @@ taken_lander(Request) :-
 
 taken_body(Courses) -->
 	{
+          format(atom(S), '~q', [Courses]),
 	  maplist(massage, Courses, CleanCourses),
           debug(students, 'courses taken ~q', [CleanCourses]),
-	  courses_taken(CleanCourses)
+	  courses_taken(CleanCourses, C)
 	},
-	html([ pre(T), p('Tech Tree')
-        %\showtree
-        
+	html([  pre(S), 
+        p('Core courses you have to take: '),
+        p('~q' , [C])
         ]).
 
-showtree -->
-       {
-          tech_tree(T)
-        },
-        html(
-            
-          
-        ).
+
 
 massage(In=_, Out) :- www_form_encode(Out, In).
