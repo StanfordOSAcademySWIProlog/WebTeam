@@ -30,7 +30,7 @@ taken_body(Courses) -->
           debug(students, 'courses taken ~q', [CleanCourses]),
 	  courses_taken(CleanCourses, C)
 	},
-	html([  pre(S), 
+	html([   
         p('Core courses you have to take: '),
         p('~q' , [C])
         ]).
